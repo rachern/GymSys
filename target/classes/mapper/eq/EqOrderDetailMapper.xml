@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.rjgc.GymSys.mapper.eq.EqOrderDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="team.rjgc.GymSys.entity.eq.EqOrderDetail">
+        <id column="order_detail_id" property="orderDetailId" />
+        <result column="order_id" property="orderId" />
+        <result column="eq_id" property="eqId" />
+        <result column="eq_number" property="eqNumber" />
+        <result column="eq_order_price" property="eqOrderPrice" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        order_detail_id, order_id, eq_id, eq_name, eq_number, eq_order_price
+    </sql>
+
+</mapper>

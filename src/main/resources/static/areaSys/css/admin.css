@@ -1,0 +1,42 @@
+/* 公告弹出框背景 */
+.modal-header{
+	background-color: #33c0a8;
+}
+.modal-header .h4{
+	color: #fff;
+}
+.modal-header button{
+	color: #fff;
+}
+.modal-header button:hover{
+	color: #f00;
+}
+.modal-body{
+	background-color: #fff;
+}
+/* 保存button样式 */
+.login-submit,.signin-submit{
+	color: #fff;
+	border: none;
+	background-color: #33c0a8;
+	width: 80%;
+}
+.login-submit:hover,.signin-submit:hover{
+	color: #fff;
+	background-color: #40DBBF;
+}
+.login-submit:focus,.signin-submit:focus,.login-submit:active,.signin-submit:active{
+	background-color: #36B7A0;
+}
+
+/* 公告弹出框中的form-group */
+.form-group p{
+	margin: 0;
+}
+.form-group label{
+	line-height: 36px;
+}
+
+
+
+

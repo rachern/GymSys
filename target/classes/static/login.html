@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>
+    <meta charset="utf-8" />
+    <title>login</title>
+    <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="hrSys/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="hrSys/css/simple-line-icons.css" type="text/css" />
+    <link rel="stylesheet" href="hrSys/css/app.css" type="text/css" />
+</head>
+<body background="hrSys/images/bodybg.jpg">
+<section id="content" class="m-t-lg wrapper-md animated fadeInUp ">
+    <div class="container aside-xl" style="margin-top: 48px;">
+        <a class="navbar-brand block"><span class="h1 font-bold" style="color: #ffffff">体育馆管理系统</span></a>
+        <section class="m-b-lg">
+            <header class="wrapper text-center">
+                <strong class="text-sucess">广东海洋大学</strong>
+            </header>
+            <form action="javascript:;" method="post" >
+                <div class="form-group">
+                    <input id="username" name="username" placeholder="用户名" class="form-control  input-lg text-center no-border">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="密码" class="form-control  input-lg text-center no-border">
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-danger lt b-white b-2x btn-block" onclick="a()" id="validate-submit">
+                    <i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">登录</span></button>
+            </form>
+        </section>
+    </div>
+</section>
+<!-- footer -->
+<footer id="footer">
+    <div class="text-center padder">
+
+    </div>
+</footer>
+<!-- / footer -->
+<div style="text-align:center;">
+</div>
+<script type="text/javascript" src="equipmentSys/js/jquery-1.10.1.js"></script>
+<script type="text/javascript" src="equipmentSys/js/bootstrap.js"></script>
+<script src="areaSys/js/jquery.cookie.js"></script>
+<script>
+    requestUrl = "/login";
+    function a() {
+        $.ajax({
+            type:"post",
+            url: requestUrl,
+            contentType:'application/x-www-form-urlencoded',
+            dataType:"json",
+            async:true,
+            data:{
+                username:document.getElementById("username").value,
+                password:document.getElementById("password").value
+            },
+            success:function(result){
+                $.cookie.json = true;
+                $.cookie('admin', result.name);
+                $.cookie('username',result.name); //存储用户名
+                $.cookie('userEmail',result.userEmail);
+                $.cookie('userid', result.id);  //存储用户id
+                localStorage.setItem('username',result.name);
+                localStorage.setItem('userid',result.id);
+                localStorage.setItem('userEmail',result.userEmail);
+
+                if (result.children[0].name == "用户") {
+                    window.location.href = "/userIndex.html";
+                }
+                if (result.children[0].name == "管理员") {
+                    window.location.href = "/roleIndex.html";
+                }
+                if (result.children[0].name == "器材管理员") {
+                    window.location.href = "/equipmentIndex.html";
+                }
+                if (result.children[0].name == "场地管理员") {
+                    window.location.href = "/areaIndex.html";
+                }
+                if (result.children[0].name == "赛事管理员") {
+                    window.location.href = "/matchIndex.html";
+                }
+            },
+            error:function(error){
+                alert("帐号或密码错误!")
+            }
+        });
+    }
+</script>
+</body>
+</html>

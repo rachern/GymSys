@@ -1,0 +1,158 @@
+
+
+/* 功能菜单模块样式 */
+.menu-select{
+	position: relative;
+}
+
+.user-banner{
+	margin-top: 16px;
+	border: 1px solid #F6F6F6;
+}
+
+.more-recommen{
+    margin-left: 20px;
+    color: #666;
+}
+
+/* 
+首页导航栏样式
+ */
+.detail-content{
+	padding-top: 36px;
+}
+
+.side-nav dl{
+	margin: 0;
+	background-color: #3BDFC4 ;
+}
+.order-classify>li,.order-detail-name>li,.order-list>li,.order-list-item>li{
+    display: inline-block;
+}
+.order-classify{
+    padding: 0 10px;
+    margin-top: 20px;
+    line-height: 22px;
+    font-size: 20px;
+    border-bottom: 2px solid #F6F6F6;
+}
+.order-classify li+li{
+    margin-left: 16px;
+}
+.order-classify li:hover{
+    cursor: pointer;
+}
+.order-classify .active{
+    color: #3CDDC3;
+    border-bottom: 2px solid #3CDDC3;
+}
+
+/* 
+公告栏 
+ */
+.order-list-table{
+    width: 100%;
+	font-size: 20px;
+}
+
+.details{
+	color: #0866C6;
+	font-size: 20px;
+
+}
+.details:hover{
+	color: #1ABC9C;
+	
+}
+
+.labletext-style{
+	font-style: italic;
+	font-size: 18px;
+	color: #155146;
+}
+
+/* 公告栏tfoot样式 */
+.page-tfoot{
+	margin-top: 20px;
+	color: #0866C6;
+	font-size:18;
+	text-align: center;
+
+}
+.page-tfoot:hover{
+	color: #1ABC9C;
+	
+}
+.page-tfoot:link{
+	color: #0866C6;
+	
+}
+
+
+
+/* 推荐标题 */
+.recommen-box{
+    margin-top: 16px;
+    line-height: 42px;
+    border-bottom: 1px solid #E4E4E4;
+}
+.more-recommen{
+    margin-left: 20px;
+    color: #666;
+}
+
+/* area展示卡 */
+.product-item{
+	display: inline-block;
+	box-sizing: border-box;
+	width: 220px;
+	margin-top: 18px;
+	border: 1px solid #E4E4E4;
+}
+.product-item + .product-item{
+	margin-left: 16px;
+}
+.product-item:nth-child(4n+5){
+	margin-left: 0;
+}
+.product-item .image-box{
+	width: 214px;
+	height: auto;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.product-item .image-box img{
+	width: 100%;
+	height: 100%;
+}
+.product-item .image-box img:hover{
+	transform: scale(1.15);
+	transition: all .08s ease-in-out;
+}
+.product-item:hover{
+	border-color: #3CDDC3;
+	box-shadow: 1px 1px 6px #3CDDC3;
+}
+.product-title{
+	color:#000;
+	font-size: 14px;
+	margin: 4px;
+}
+.product-title:hover{
+	cursor: pointer;
+}
+.product-description{
+	padding: 6px 10px;
+}
+.product-price{
+	margin-right: 16px;
+	color: #FF4400;
+}
+.addcar-btn{
+	/* margin-left: 64px; */
+	border: 1px solid #F56B27;
+	color: #F56B27;
+	border-radius: 20px 22px;
+}
+
+

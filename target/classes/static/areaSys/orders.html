@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1,width=device-width">
+    <meta name="Author" content="wangbin">
+    <link rel="stylesheet" href="css/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/pagination.css" />
+	<link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/order.css">
+    <title>订单管理</title>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="header-top">
+        <div class="container">
+            <div class="col-sm-4 col-xs-6">
+                <span class="hello-user-box">
+                    <i class="glyphicon glyphicon-user"></i> 你好
+                    <a href="./myself.html" class="username">feng</a>
+                    <a href="javascript:;" class="login-out-btn">退出登录</a>
+                </span>
+                <span class="loginsign-btn-box">
+                    <a href="javascript:;" class="btn btn-info login-btn">登录</a>
+                    <a href="javascript:;" class="btn btn-info sign-btn">注册</a>
+                </span>
+            </div>
+            <a class="col-sm-2 col-sm-offset-6 col-xs-6 text-right">意见反馈</a>
+        </div>
+    </div>
+    <header>
+        <div class="container logo-container">
+            <h1 class="col-sm-4">海大体育馆管理系统</h1>
+        </div>
+        <div class="header-nav">
+            <ul class="container">
+                <li>
+                    <a href="./index.html">首页</a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="jump-order">订单管理</a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="jump-myself">个人中心</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="container content">
+        <ul class="order-classify">
+            <li class="active payed">待审核</li>
+            <li class="shipped">已审核</li>
+            <li class="received">已完成</li>
+            
+        </ul>
+
+        <div class="order-list-box">
+            <div class="order-list-div">
+				
+                <table class="order-list-table table  table-hover">
+                    <thead class="order-list-item-sum">
+                        <tr>
+                            <th>订单号编号</th>
+                            <th>预约场地名称</th>
+                            <th>预约时间</th>
+                            <th>截止时间</th>
+							<th>价格(元)</th>
+							<th>状态</th>
+							<th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody class="order-list-item-detail">
+						    
+                    </tbody>
+                </table>
+				
+				<div class="M-box pull-right"style="margin-top: 10px;"></div>
+				
+            </div>
+			
+		</div>
+        <div id="pageTool" class="pageTool"></div>
+		
+    </div>
+    <footer>
+        <div class="text-center footer-about">
+            <a href="./help.html" target="_blank">关于我们</a>
+        </div>
+        <div class="text-center footer-copyright">版权信息</div>
+    </footer>
+    <!-- 底部 -->
+    <!-- 详情模态框 -->
+      <div class="order-modal modal fade" id="orderModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">close</span>
+                </button>
+                <h4 class="text-center h4">订单信息</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" role="form" class="signup-form">
+                    <div class="form-group row">
+                        <label for="" class="control-label col-sm-2">订单编号</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control order_id" name="order_id" disabled="disabled">
+                            
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="control-label col-sm-2">租赁场地</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control order_filed" name="order_filed" disabled="disabled">
+                            
+                        </div>
+                    </div>
+					
+					 <div class="form-group row">
+					    <label for="" class="control-label col-sm-2">场地类型</label>
+					    <div class="col-sm-9">
+					        <input type="text" class="form-control order_filed_type" name="order_filed_type" disabled="disabled">
+					        
+					    </div>
+					</div>
+					
+                    <div class="form-group row">
+                        <label for="" class="control-label col-sm-2">租赁价格</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control order_money" name="order_money" disabled="disabled">
+                            
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="control-label col-sm-2">开始日期</label>
+                        <div class="col-sm-9">
+                            <input type="phone" class="form-control order_begin" name="order_begin" disabled="disabled">
+                            
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="control-label col-sm-2">截止日期</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control order_end" name="order_end" disabled="disabled">
+                            
+                        </div>
+                    </div>
+                   
+                </form>
+            </div>
+        </div>
+        <!-- modal-dialog -->
+    </div>
+    
+	
+	<!-- 登录模态框 -->
+    <div class="login-modal modal fade" id="loginModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">close</span>
+                </button>
+                <h4 class="h4 text-center">登录</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" role="form" class="form-horizontal">
+                    <p class="login-error tips">密码错误</p>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">用户名：</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control login-username" required="required" placeholder="用户名/手机号/邮箱">
+                            <p class="login-name-message tips">请输入用户名</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-sm-2">密码：</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control login-password" required="required" placeholder="请输入6-16位密码，区分大小写，不能使用空格！">
+                            <p class="login-password-message tips">请输入6-16位密码，区分大小写，不能使用空格！</p>
+                        </div>
+                    </div>
+                    <div href="" class="text-right">忘记密码</div>
+                    <div class="form-group text-center">
+                        <button type="button" class="btn login-submit">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 注册模态框 -->
+    <div class="signin-modal modal fade" id="signinModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">close</span>
+                </button>
+                <h4 class="text-center h4">注册</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" role="form" class="signup-form">
+                    <p class="sign-error-tips tips">该邮箱已经被注册了，直接登录吧</p>
+                    <div class="form-group row">
+                        <label for="" class="control-label col-sm-2">用户名：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control signin-username" name="userName" required="required" placeholder="用户名/手机号/邮箱">
+                            <p class="sign-name-message tips">请输入用户名</p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="control-label col-sm-2">密码：</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control signin-password" name="password" required="required" placeholder="密码">
+                            <p class="sign-password-message tips">请设置密码</p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="control-label col-sm-2">确认密码：</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control resignin-password" required="required" placeholder="再次输入密码">
+                            <p class="sign-secpassword-message tips">两次输入密码不一致，请重新输入</p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="control-label col-sm-2">电话号码：</label>
+                        <div class="col-sm-9">
+                            <input type="phone" class="form-control phoneNumberInput" name="phoneNumber" required="required" placeholder="手机号">
+                            <p class="tips phoneNumberTips">请输入电话号码</p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="control-label col-sm-2">电子邮箱：</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" name="email" required="required" placeholder="邮箱" pattern="^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$">
+                            <p class="tips emailtips">请输入邮箱</p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-1 col-sm-offset-2">
+                            <input type="radio" class="radio radio-inline" checked="checked" name="gender" required="required" value="男">
+                        </div>
+                        <label for="" class="col-sm-2">男</label>
+                        <div class="col-sm-1">
+                            <input type="radio" name="gender" required="required" value="女">
+                        </div>
+                        <label for="" class=" col-sm-2">女</label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="control-label col-sm-2">头像:</label>
+                        <div class="col-sm-9">
+                            <input type="file" id="userSignAvatar" />
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="button" class="btn signin-submit">注册</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- modal-dialog -->
+    </div>
+
+    <script src="js/jquery-3.3.1.js"></script>
+    <!-- 引入jQuery -->
+    <script src="css/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- 引入bootstrap -->
+    <script src="js/jquery.cookie.js"></script>
+    <!-- 引入cookie插件 -->
+    <script src="js/common.js"></script>
+    <script src="js/orders.js"></script>
+	<!-- 分页插件 -->
+	<script src="js/jquery.pagination.js"></script>
+	
+	
+</body>
+
+</html>

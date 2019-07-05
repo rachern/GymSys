@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+<head>
+	<meta charset="utf-8" />
+	<title>managerRegister</title>
+	<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" href="hrSys/css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="hrSys/css/simple-line-icons.css" type="text/css" />
+	<link rel="stylesheet" href="hrSys/css/app.css" type="text/css" />
+</head>
+<body background="hrSys/images/bodybg.jpg">
+<section id="content" class="m-t-lg wrapper-md animated fadeInUp ">
+	<div class="container aside-xl" style="margin-top: 48px;">
+		<a class="navbar-brand block"><span class="h1 font-bold" style="color: #ffffff">体育馆管理系统</span></a>
+		<section class="m-b-lg">
+			<header class="wrapper text-center">
+				<strong class="text-sucess">广东海洋大学</strong>
+			</header>
+			<form action="javascript:;" method="post" >
+				<div class="form-group">
+					<input id="email" name="email" placeholder="邮箱" class="form-control  input-lg text-center no-border">
+				</div>
+				<div class="form-group">
+					<input id="username" name="username" placeholder="用户名" class="form-control  input-lg text-center no-border">
+				</div>
+				<div class="form-group">
+					<input type="password" id="password" name="password" placeholder="密码" class="form-control  input-lg text-center no-border">
+				</div>
+				<div class="form-group">
+					<input type="password" id="rePassword" name="rePassword" placeholder="重复密码" class="form-control  input-lg text-center no-border">
+				</div>
+				<div class="form-group">
+					<input type="radio" value="1" name="role"/>管理员
+					<input type="radio" value="4" name="role"/>器材管理员
+					<input type="radio" value="5" name="role"/>场地管理员
+					<input type="radio" value="6" name="role"/>赛事管理员
+				</div>
+
+				<button type="submit" class="btn btn-lg btn-danger lt b-white b-2x btn-block" onclick="a()" id="validate-submit">
+					<i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">注册</span></button>
+			</form>
+		</section>
+	</div>
+</section>
+<!-- footer -->
+<footer id="footer">
+	<div class="text-center padder">
+
+	</div>
+</footer>
+<!-- / footer -->
+<div style="text-align:center;">
+</div>
+<script type="text/javascript" src="equipmentSys/js/jquery-1.10.1.js"></script>
+<script type="text/javascript" src="equipmentSys/js/bootstrap.js"></script>
+<script src="areaSys/js/jquery.cookie.js"></script>
+<script>
+	requestUrl = "/login";
+	function a() {
+		if (confirm("您确定提交信息吗？") == true){
+			var role = $("input[type='radio']:checked").val();
+			var data = {
+				userEmail:$("#email").val(),
+				userName:$("#username").val(),
+				userPassword:$("#password").val()
+			}
+			var data1 = JSON.stringify(data);
+			$.ajax({
+				type: "POST",
+				url: ("http://127.0.0.1:8080/authUser/admin/"+role),
+				dataType: "json",
+				contentType:"application/json;charset=UTF-8",
+				data:data1,
+				success: function(data){
+					console.log(data);
+					alert("注册成功");
+					window.location.href = "/login.html";
+				}
+			});
+		}
+	}
+</script>
+</body>
+</html>

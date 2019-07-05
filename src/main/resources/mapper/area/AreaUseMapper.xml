@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.rjgc.GymSys.mapper.area.AreaUseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="team.rjgc.GymSys.entity.area.AreaUse">
+        <id column="area_use_id" property="areaUseId" />
+        <result column="area_book_id" property="areaBookId" />
+        <result column="use_start_time" property="useStartTime" />
+        <result column="use_end_time" property="useEndTime" />
+        <result column="money" property="money" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        area_use_id, area_book_id, use_start_time, use_end_time, money
+    </sql>
+
+</mapper>

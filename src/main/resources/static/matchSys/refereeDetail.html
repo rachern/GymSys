@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>refereeDetail</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+		
+	</head>
+	<body>
+	<div id="nav">
+		<nav class="navbar navbar-default navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#" style="font-size: 20px;">广东海洋大学体育馆管理系统管理端</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+						<li><a href="#">用户管理</a></li>
+						<li class="dropdown" class="active">
+							<a href="equipmentSys/managerEquipmentList.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">赛事管理 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="/matchSys/matchAdd.html">添加赛事</a></li>
+								<li><a href="/matchSys/matchList.html">赛事列表</a></li>
+								<li><a href="/matchSys/refereeAdd.html">添加裁判</a></li>
+								<li><a href="/matchSys/refereeList.html">裁判列表</a></li>
+							</ul>
+						</li>
+						<li><a href="#">场地管理</a></li>
+						<li><a href="#">器材管理</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">注册</a></li>
+						<li><a href="#">登录</a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+	</div>
+		<div id="result" class="container">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1 class="panel-title">裁判详细信息</h1>
+				</div>
+				<div class="panel-body">
+					裁判ID：{{refereeId}}<br />
+					裁判姓名：{{name}}<br />
+					裁判信息：{{message}}
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/refereeDetail.js"></script>
+	</body>
+</html>

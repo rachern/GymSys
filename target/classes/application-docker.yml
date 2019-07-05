@@ -1,0 +1,34 @@
+spring:
+  jackson:
+    date-format: yyyy-MM-dd hh:mm:ss
+    time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql://mysql:3306/gymsys?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: MyNewPass4!
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: show status like '%Service_Status%'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    asyncInit: true
+sever:
+  servlet:
+    session:
+      timeout: 2592000
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+
+logging:
+  level:
+    team.rjgc.GymSys.mapper: DEBUG
+

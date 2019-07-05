@@ -1,0 +1,84 @@
+package ${package.Controller};
+
+
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+
+#end
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import #parse("templatesMybatis/config.vm")base.ResultUtil;
+import #parse("templatesMybatis/config.vm")base.dto.ResultDTO;
+import ${package.Service}.${table.serviceName};
+import ${package.Entity}.${entity};
+
+/**
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@RestController
+@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass} {
+#else
+public class ${table.controllerName} {
+#end
+
+    @Autowired
+    private ${table.serviceName} ${table.entityPath}Service;
+
+    @PostMapping
+    @ApiOperation(value = "插入一条数据")
+    public ResultDTO insertOne(${entity} ${table.entityPath}) throws Exception {
+        ${table.entityPath}Service.save(${table.entityPath});
+        return ResultUtil.Success(${table.entityPath});
+    }
+
+    @PutMapping
+    @ApiOperation(value = "按id修改数据")
+    public ResultDTO updateById(${entity} ${table.entityPath}) throws Exception {
+        ${table.entityPath}Service.updateById(${table.entityPath});
+        return ResultUtil.Success();
+    }
+
+    @DeleteMapping("/{id:\\d+}")
+    @ApiOperation("按id删除数据")
+    public ResultDTO deleteById(@PathVariable Long id) throws Exception {
+        ${table.entityPath}Service.removeById((long) id);
+        return ResultUtil.Success();
+    }
+
+    @GetMapping("/page")
+    @ApiOperation("按条件查询，分页")
+    public IPage<${entity}> selectEntityPage(${entity} ${table.entityPath},
+                                            @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                                            @RequestParam(value = "pageSize", defaultValue = "8") int pageSize)throws Exception{
+        QueryWrapper<${entity}> ${table.entityPath}QueryWrapper = new QueryWrapper<>();
+        //${table.entityPath}QueryWrapper.eq("name",test.getName());
+        return ${table.entityPath}Service.page(new Page<${entity}>(pageNum, pageSize), ${table.entityPath}QueryWrapper);
+    }
+
+    @GetMapping("/list")
+    @ApiOperation("按条件查询，不分页")
+    public ResultDTO selectEntityPage(${entity} ${table.entityPath})throws Exception{
+        QueryWrapper<${entity}> ${table.entityPath}QueryWrapper = new QueryWrapper<>();
+        //${table.entityPath}QueryWrapper.eq("name",test.getName());
+        return ResultUtil.Success(${table.entityPath}Service.list(${table.entityPath}QueryWrapper));
+    }
+
+    @GetMapping("/{id:\\d+}")
+    @ApiOperation("按id查询数据")
+    public ResultDTO selectEntityPage(@PathVariable Long id)throws Exception{
+        return ResultUtil.Success(${table.entityPath}Service.getById(id));
+    }
+
+
+}

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta content="" name="description" />
+    <meta content="webthemez" name="author" />
+    <title>海大体育馆管理系统</title>
+	<!-- Bootstrap Styles-->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+     <!-- FontAwesome Styles -->
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="css/custom-styles.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="./assets/css/common.css"> -->
+    <link rel="stylesheet" href="css/pagination.css">
+	<link rel="stylesheet" href="css/admin.css" />
+	
+    <!-- jQuery Js -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <!-- 引入 echarts.js -->
+    <script type="text/javascript" src="js/echarts.common.min.js"></script>
+
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="admin.html"><strong>系统后台管理</strong></a>
+				<div id="sideNav" href="">
+		<i class="fa fa-bars icon"></i> 
+		</div>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+					
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="adminLogin.html"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
+                        </li>
+                    </ul>
+                    
+                </li>
+       
+            </ul>
+        </nav>
+        
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="btn-ord">
+                        <a class="active-menu" href="#"><i class="fa fa-edit"></i> 订单管理</a>
+                    </li>                                      
+                    <li class="btn-rep">
+                        <a href="#"><i class="fa fa-fw fa-file"></i> 公告管理</a>
+                    </li>
+
+                    <li class="btn-category">
+                        <a  href="#"><i class="fa fa-sitemap"></i> 分类管理</a>
+                    </li>                    
+                    <li class="btn-commodity">
+                       <a  href="#"><i class="fa fa-table"></i> 场地管理</a>
+                    </li>
+
+                  
+                </ul>            
+            </div>
+        </nav>
+        
+        <div id="page-wrapper">
+            <!-- 页面主体内容 -->
+            <div id="page-inner">
+                <!-- 订单管理 -->
+                <div class="panel panel-default tab-content panel-focus ord"  id="ord" >
+                    <div class="header"> 
+                        <h1 class="page-header">订单管理</h1>					
+                    </div>
+                    <div class="row" style="background-color:rgb(237, 237, 237);height:50px;">
+                    <div class="col-md-4 col-xs-8">
+                        <input type="search" id="searchOrder" class="form-control col-md-6" aria-controls="dataTables-example" placeholder="请输入订单号搜索">         
+                    </div>                        
+                    </div>
+
+                    <div class="panel-body tab-pane active"style="padding: 0px;">
+                            <div class="col-md-12" style="padding:0;">
+                         <!--    Hover Rows  -->
+                        <div class="panel panel-default" style="margin:0;">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>订单编号</th>
+                                                <th>总价</th>
+												<th>订单时间</th>
+                                                <th>订单状态</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="tbodyOrder" id="tbodyOrder" >
+                                           
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    </div>                    
+
+                </div>                                
+				
+                <!-- 查看订单详情 -->
+                <div class="panel panel-default tab-content panel-focus orderDetail"  id="orderDetail" style="display:none;">
+                        <div class="header"> 
+                            <h1 class="page-header">订单详情</h1>					
+                        </div>
+                        <div class="panel-body tab-pane active"style="padding: 0px;">
+                            <div class="col-md-12" style="padding:0;">
+                             <!--    Hover Rows  -->
+                            <div class="panel panel-default" style="margin:0;">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>订单号编号</th>
+                                                    <th>预约场地名称</th>
+                                                    <th>预约时间</th>
+                                                    <th>截止时间</th>
+                                                	<th>金额总数</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="tbodyDetail">
+        
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End  Hover Rows  -->
+                            </div>
+                            </div>
+    
+                </div> 
+
+				<!-- 修改订单状态 -->
+                <!--遮罩层-->
+                <div class="bgPop3 newpop3"></div>
+                <!--弹出框-->
+                <div class="pop3 newpop3" >
+                    <div class="pop-top">
+                        <h2>修改订单状态</h2>
+                        <span class="pop-close">Ｘ</span>
+                    </div>
+                    <div class="pop-content3">                                        
+                        <form class="form-horizontal" id="order_status" >
+                            <div class="form-group">
+                                <label for="categoryname" class="col-sm-2 control-label">订单号</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="orderid" disabled="disabled" readonly="readonly">
+                                </div>
+                                
+                            </div>                            
+                            <div>
+                                <div class="radio3 radio-check radio-inline  col-sm-offset-2">
+                                  <input type="radio" value="1" id="radio1" name="radio2" checked="checked">
+                                  <label for="radio1">
+                                    订单成立
+                                  </label>
+                                </div>
+                                <div class="radio3 radio-check radio-inline">
+                                    <input type="radio" value="2" id="radio2" name="radio2">
+                                    <label for="radio2">
+                                    退回订单
+                                    </label>
+                                </div>
+                           
+							  </div>                 
+                        </form>
+                        
+                    </div>
+                    <div class="pop-foot">
+                        <input type="button" value="关闭" class="pop-cancel pop-close">
+                        <input type="button" value="确认" class="pop-ok status-ok">
+                    </div>
+                </div>
+
+               
+				<!-- 分类管理 -->
+				<div class="panel panel-default tab-content panel-focus cate" id="cate" style="display:none">
+				    <div class="header"> 
+				        <h1 class="page-header">分类管理</h1>					
+				    </div>
+				    <div class="row" style="background-color:rgb(237, 237, 237);height:50px;">
+				            <div class="col-md-4 col-xs-8">
+				                <input type="search" id="searchCate" class="form-control col-md-6" aria-controls="dataTables-example" placeholder="输入分类名称搜索">         
+				            </div>                            
+				            <div class="col-md-8 col-xs-4">
+				                <a href="#" class="btn btn-success pull-right newCate">新增分类</a>
+				            </div>
+				
+				        </div>
+				    <div class="col-md-12" style="padding:0;">
+				            <!--    Hover Rows  -->
+				           <div class="panel panel-default" style="margin-bottom: 0px;">
+				               <div class="panel-body">
+				                   <div class="table-responsive">
+				                       <table class="table table-hover">
+				                           <colgroup>
+				                               <col width="33%">
+				                               <col width="33%">
+				                               <col wdith="auto">
+				                           </colgroup>
+				                           <thead>
+				                               <tr>
+				                                   <th>分类ID</th>
+				                                   <th>分类名称</th>
+				                                   <th>操作</th>
+				                               </tr>
+				                           </thead>
+				                           <tbody id="tbodyCate">
+				    
+				                           </tbody>
+				                       </table>
+				                   </div>
+				               </div>
+				           </div>
+				           <!-- End  Hover Rows  -->
+				       </div>  
+							
+							
+							
+				</div>   
+				
+				
+				<!-- 查看修改分类 -->
+				<div class="panel panel-default tab-content panel-focus modifyCate"  id="modifyCate" style="display:none;">
+				    <div class="header"> 
+				        <h1 class="page-header">修改分类</h1>					
+				    </div>
+				    <div class="row">
+				        <div class="col-xs-12">
+				            <div class="panel panel-default"style="margin-bottom: 0px;">
+				                
+				                <div class="panel-body">
+				                    <form id="modi_cate_info" onSubmit="return false;">
+				                        <div class="form-group">
+				                            <label for="categoryname">分类名称</label>
+				                            <input type="text" class="form-control" id="name">
+				                        </div>
+				                        <button  class="btn btn-default modiCateInfo">修改</button>
+				                        <input type="text" class="form-control" id="categoryId" id="areaTypeId" style="display:none;">
+				                    </form>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				
+				</div> 
+				      
+				<!-- 新增分类    -->
+				<!--遮罩层-->
+				<div class="bgPop2 newpop2"></div>
+				<!--弹出框-->
+				<div class="pop2 newpop2">
+				    <div class="pop-top">
+				        <h2>新建分类</h2>
+				        <span class="pop-close">Ｘ</span>
+				    </div>
+				    <div class="pop-content2">                                        
+				        <form class="form-horizontal" id="category_content"  method="post">
+				            <div class="form-group">
+				                <label for="pro_name" class="col-sm-2 control-label">分类名称</label>
+				                <div class="col-sm-10">
+				                    <input class="form-control" id="categoryname" name="typeName" required>
+				                </div>
+				            </div>
+				    
+				        </form>
+				        
+				    </div>
+				    <div class="pop-foot">
+				        <input type="button" value="关闭" class="pop-cancel pop-close">
+				        <input type="button" value="确认" class="pop-ok product-ok">
+				    </div>
+				</div>    	
+				
+				<!-- 场地管理 -->
+				<div class="panel panel-default tab-content panel-focus commodity"  id="commodity"  style="display:none">
+				        <div class="header"> 
+				            <h1 class="page-header">场地管理</h1>					
+				        </div>
+				        <div class="row" style="background-color:rgb(237, 237, 237);height:50px;">
+				            <div class="col-md-4 col-xs-8">
+				                <input type="search" id="searchFiled" class="form-control col-md-6" aria-controls="dataTables-example" placeholder="输入场地类型搜索">         
+				            </div>                            
+				            <div class="col-md-8 col-xs-4">
+				                <a href="#" class="btn btn-success pull-right newProduct">新增场地</a>
+				            </div>
+				
+				        </div>
+				        <div class="panel-body tab-pane active"style="padding: 0px;">
+				            <div class="col-md-12" style="padding:0;">
+				           
+				            <div class="panel panel-default" style="margin:0;">
+				                <div class="panel-body">
+				                    <div class="table-responsive">
+				                        <table class="table table-hover">
+				                            
+				                               <colgroup>
+				                                   
+				                                   <col width="11%">
+				                                   <col width="11%">
+				                                   <col width="11%">
+				                                   <col width="11%">
+				                                   <col width="11%">
+				                                   <col width="11%">
+				                                   <col wdith="auto">
+				                               </colgroup>
+				                               <thead>
+				                                   <tr> 
+				                                       <th>场地编码</th>
+				                                       <th>场地名称</th>
+				                                       <th>场地类型</th>                                                       
+				                                       <th>教学场地</th>
+				                                       <th>训练场地</th>
+				                                       <th>价格(元/h)</th>
+				                                       <th>操作</th>
+				                                   </tr>
+												   
+				                               </thead>
+											   <tbody id="tbodyCommodity">
+												   
+											   </tbody>
+				                              
+				                           </table>
+									</div>
+				                       
+				                </div>
+				                    
+				            </div>
+				               
+							</div>
+				        </div>         
+				        <div class="M-box pull-right"style="margin-top: 10px;"></div>            
+				</div> 
+				
+				<!-- 查看修改场地 -->
+				<div class="panel panel-default tab-content panel-focus modify"  id="modify" style="display:none;">
+				    <div class="header"> 
+				        <h1 class="page-header">修改场地信息</h1>					
+				    </div>
+				    <div class="row">
+				        <div class="col-xs-12">
+				            <div class="panel panel-default"style="margin-bottom: 0px;">
+				                
+				                <div class="panel-body">
+				                    <form id="modi_pro_info">
+				                        <div class="form-group">
+				                            <label for="productId">场地名称</label>
+				                            <input type="text" class="form-control" id="areaName" name="areaName">
+				                        </div>
+				                        <div class="form-group">
+				                                <label for="categoryname">场地类型</label>
+				                                <input type="text" class="form-control" id="areaType" name="areaType">
+				                        </div>
+				                        <div class="form-group">
+				                           <label for="name">教学场地</label>
+				                           <input type="radio"  id="classed_1" name="classed" value="1"
+											style="margin-left: 20px;margin-right: 5px;margin-top: 20px;margin-bottom: 20px;">是</input>
+											<input type="radio"  id="classed_2" name="classed" value="0" checked="checked"
+											style="margin-left: 20px;margin-right: 5px;margin-top: 20px;margin-bottom: 20px;">否</input>
+				                        </div>
+										<div class="form-group">
+										    <label for="name">训练场地</label>
+										    <input type="radio"  id="teamed_1" name="teamed" value="1"
+											style="margin-left: 20px;margin-right: 5px;margin-top: 20px;margin-bottom: 20px;">是</input>
+											<input type="radio"  id="teamed_2" name="teamed" value="0" checked="checked"
+											style="margin-left: 20px;margin-right: 5px;margin-top: 20px;margin-bottom: 20px;">否</input>
+										</div>
+				                        <div class="form-group">
+				                            <label for="costprice">价格(元/h)</label>
+				                            <input type="text" class="form-control" id="money" name="money">
+				                        </div>
+				                        <button  class="btn btn-default modiProInfo" >修改</button>
+				                    </form>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				
+				</div> 
+				
+				
+				<!-- 新建场地 -->
+				<!--遮罩层-->
+				<div class="bgPop newpop"></div>
+				<!--弹出框-->
+				<div class="pop newpop">
+				    <div class="pop-top">
+				        <h2>新建场地</h2>
+				        <span class="pop-close">Ｘ</span>
+				    </div>
+				    <div class="pop-content">                                        
+				        <form class="form-horizontal" id="product_content" enctype="multipart/form-data" method="post">
+				            <div class="form-group">
+				                <label for="pro_name" class="col-sm-2 control-label">场地名称</label>
+				                <div class="col-sm-10">
+				                    <input class="form-control" id="filed_name" name="filed_name" required>
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label for="categoryname" class="col-sm-2 control-label">场地类型</label>
+				                <div class="col-sm-10" id="type_selected_menu">
+				                        <!-- <input class="form-control" id="filed_type" name="filed_type" required> -->
+				                </div>
+				            </div>
+				            <div class="form-group ">
+								<label class="col-sm-2 control-label">教学场地</label>
+								<div class="col-sm-10">
+									<input type="radio"  name="filed_classed" value="1"
+										style="margin-left: 20px;margin-right: 5px;margin-top: 20px;margin-bottom: 20px;">是</input>
+									<input type="radio"  name="filed_classed" value="0" checked="checked"
+										style="margin-left: 20px;margin-right: 5px;margin-top: 20px;margin-bottom: 20px;">否</input>
+								</div>
+				            </div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label">训练场地</label>
+								<div class="col-sm-10">
+									<input type="radio" name="filed_teamed" value="1"
+										style="margin-left: 20px;margin-right: 5px;margin-top: 20px;margin-bottom: 20px;">是</input>
+									<input type="radio" name="filed_teamed" value="0" checked="checked"
+										style="margin-left: 20px;margin-right: 5px;margin-top: 20px;margin-bottom: 20px;">否</input>
+				                </div>
+				            </div>
+				            <div class="form-group">
+				                <label  class="col-sm-2 control-label">价格(元/h)</label>
+				                <div class="col-sm-10">
+				                    <input class="form-control" id="filed_money" name="filed_money" >
+				                </div>
+				            </div>
+				           
+						</form>
+				        
+				    </div>
+				    <div class="pop-foot">
+				        <input type="button" value="关闭" class="pop-cancel pop-close">
+				        <input type="button" value="确认" class="pop-ok product-ok">
+				    </div>
+				</div>
+				        
+				
+				
+                <!-- 公告管理 -->
+                <div class="panel panel-default tab-content panel-focus rep"  id="rep" style="display:none">
+                    <div class="header"> 
+                        <h1 class="page-header">公告管理</h1>					
+                    </div>
+					<div class="row" style="background-color:rgb(237, 237, 237);height:50px;">
+						<div class="col-md-4 col-xs-8">
+							<!-- searchOrder -->
+							<a type="search" class="col-md-6" href="javascript:;" 
+								onclick="edit_new_notice()" >编辑新公告</a>         
+						</div>                        
+                    </div>
+                    
+                    <div class="panel-body tab-pane active"style="padding: 0px;">
+                            <div class="col-md-12" style="padding:0;">
+                         <!--    Hover Rows  -->
+                        <div class="panel panel-default" style="margin:0;">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>编号</th>
+                                                <th>标题</th>
+                                                <th>操作</th>   
+                                            </tr>
+											
+                                        </thead>
+                                        <!-- class="tbodyReport"-->
+										<tbody id="tbodyReport">
+										<!-- 	<tr >
+											    <td>${result[i].count}</td>
+											    <td>${result[i].soldnumber}</td>
+											    <td>
+											        <a href="#" style="display:block;">查看&修改</a>
+											        <a href="#" style="display:block;">删</a>
+											    </td>
+											</tr> -->
+											
+										</tbody>
+										
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End  Hover Rows  -->
+                    </div>
+                    
+             
+				</div>   
+                
+                
+
+		<!-- 查看&&修改公告 -->
+		<div class="login-modal modal fade" id="detailModal">
+			<div class="modal-dialog">
+				<div class="modal-header">
+				    <button class="close" data-dismiss="modal">
+				        <span aria-hidden="true">&times;</span>
+				        <span class="sr-only">close</span>
+				    </button>
+				    <h4 class="h4 text-center" id="lable_title">公告</h4>
+				</div>
+				<div class="modal-body">
+					<form action="" role="form" class="form-horizontal">
+						<div class="form-group row" >
+							<label for="" class="control-label col-sm-2">标题</label>
+							<div class="col-sm-9">
+							    <input id="detail_title" type="text" class="form-control signin-username" name="userName" required="required" >
+							</div>
+						</div>
+						<!-- 具体信息 -->
+						<div class="form-group row" >
+							<label for="" class="control-label col-sm-2">内容</label>
+							<div class="col-sm-9">
+							    <input id="detail_content" type="text" class="form-control signin-username" name="userName" required="required" >
+							</div>
+						</div>
+						<!-- 发布者信息 -->
+						<div class="form-group row" >
+							
+							<label id="label_writer" for="" class="control-label col-sm-2">发布者</label>
+							<div class="col-sm-9">
+							    <input id="detail_writer" type="text" class="form-control signin-username" name="userName" required="required" >
+							</div>
+						</div>
+						<div class="form-group text-center">
+						    <button type="button" class="btn login-submit">保存</button>
+						</div>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+		
+		
+
+    <!-- jquery.cookie.js -->
+    <script src="js/jquery.cookie.js"></script>
+    <!-- jquery.form.js -->
+    <script src="js/jquery.form.js"></script>
+      <!-- Bootstrap Js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+    <script src="js/jquery.metisMenu.js"></script>
+    <!-- 分页插件jquery.pagination.js -->
+    <script src="js/jquery.pagination.js"></script>
+      <!-- Custom Js -->
+    <script src="js/custom-scripts.js"></script>
+	
+	<script src="js/admin.js"></script>
+	
+    
+   
+</body>
+</html>

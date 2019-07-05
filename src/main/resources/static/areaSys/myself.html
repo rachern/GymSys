@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1,width=device-width">
+    <meta name="Author" content="wangbin">
+    <link rel="stylesheet" href="css/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/myself.css">
+    <title>个人中心</title>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="header-top">
+        <div class="container">
+            <div class="col-sm-4 col-xs-6">
+                <span class="hello-user-box">
+                    <i class="glyphicon glyphicon-user"></i> 你好
+                    <a href="./myself.html" class="username">feng</a>
+                    <a href="javascript:;" class="login-out-btn">退出登录</a>
+                </span>
+                <span class="loginsign-btn-box">
+                    <a href="javascript:;" class="btn btn-info login-btn">登录</a>
+                    <a href="javascript:;" class="btn btn-info sign-btn">注册</a>
+                </span>
+            </div>
+            <a class="col-sm-2 col-sm-offset-6 col-xs-6 text-right">意见反馈</a>
+        </div>
+    </div>
+    <header>
+        <div class="container logo-container">
+            <h1 class="col-sm-4">海大体育馆管理系统</h1>
+        </div>
+        <div class="header-nav">
+            <ul class="container">
+                <li>
+                    <a href="./index.html">首页</a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="jump-order">订单管理</a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="jump-myself">个人中心</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+	
+    <div class="container content">
+        <!-- 显示用户头像名字 -->
+        <div class="user-banner row">
+            <div class="col-md-2">
+                <div class="image-box">
+                    <img src="image/userheader.jpg" alt="">
+                </div>
+                <span class="text-center user-name">hww</span>
+            </div>
+            <div class="col-md-3 coupon">
+                <div class="text-center coupon-num"> </div>
+                <div class="text-center"> </div>
+            </div>
+        </div>
+        <!-- 显示用户详细信息栏 -->
+        <div class="row detail-content">
+            <div class="side-nav col-md-2">
+                <dl>
+                    <dt>设置</dt>
+                    <dd class="active basic-detail-btn">个人资料</dd>
+                    <dd class="change-password-btn">修改密码</dd>
+                    <!-- <dd class="coupon-btn">电子券</dd> -->
+                </dl>
+            </div>
+            <!-- 个人资料 -->
+            <div class="show-borad col-md-8">
+               
+			</div>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <footer>
+        <div class="text-center footer-about">
+            <a href="javascript:;" target="_blank">关于我们</a>
+        </div>
+        <div class="text-center footer-copyright">版权信息</div>
+    </footer>
+    <script src="js/jquery-3.3.1.js"></script>
+    <!-- 引入jQuery -->
+    <script src="css/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- 引入bootstrap -->
+    <script src="js/jquery.cookie.js"></script>
+    <!-- 引入cookie插件 -->
+    <script src="js/common.js"></script>
+    <script src="js/myself.js"></script>
+</body>
+
+</html>

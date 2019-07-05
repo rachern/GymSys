@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+    <title>添加角色</title>
+</head>
+<script src="frame/jquery-3.2.1.js"></script>
+<link rel="stylesheet" type="text/css" href="css/person.css">
+<link rel="stylesheet" href="frame/layui/css/layui.css" media="all">
+
+<body>
+    <div class="main">
+        <blockquote class="layui-elem-quote layui-text">
+            添加角色
+        </blockquote>
+        <form class="layui-form" id="form1" onsubmit="return false">
+            <div class="content">
+                <div class="layui-form-item divinput">
+                    <label class="layui-form-label">管理员名字</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="管理员名字" placeholder="请输入" autocomplete="off" class="layui-input"
+                            id="role_name">
+                    </div>
+                </div>
+                <span></span>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" id="sumbit">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <button id="fanhui" class="layui-btn layui-btn-primary">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="frame/layui/layui.js"></script>
+    <script src="js/add-role.js"></script>
+    <script type="text/javascript">
+        $("#fanhui").click(function () {
+            console.log(1)
+            window.history.back()
+        })
+    </script>
+</body>
+
+</html>

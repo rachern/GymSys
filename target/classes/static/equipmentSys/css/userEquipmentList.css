@@ -1,0 +1,26 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.head{
+	height: 30px;
+	width: 30px;
+	margin-top: 10px;
+	border-radius: 50%;
+	background: white;
+}
+p{
+	font-size: 15px;
+}
+#result{
+	text-align: center;
+}
+#result .nums>span,#result .time>span{
+	cursor: pointer;
+	padding: 5px 10px;
+	margin: 5px 5px;
+	font-size: 20px;
+}
+#result .nums>.num,#result .time>.num{
+	border: black solid 1px;
+}

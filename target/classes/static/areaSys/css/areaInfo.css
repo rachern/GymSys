@@ -1,0 +1,64 @@
+.area-box{
+	padding: 10px 15px
+}
+
+
+.layout-table{
+	width: 100%;
+	background-color: #fff;
+	color: #666
+}
+
+.layout-table tr {
+	transition: all .3s;
+	-webkit-transition: all .3s
+}
+
+.layout-table th {
+	text-align: left;
+	font-weight: 400
+}
+
+.layout-table td, .layout-table th {
+	position: relative;
+	padding: 9px 15px;
+	min-height: 20px;
+	line-height: 20px;
+	font-size: 14px
+}
+
+
+
+.layout-elem-field {
+	margin-bottom: 10px;
+	padding: 0;
+	border-width: 1px;
+	border-style: solid
+}
+
+.layout-elem-field legend {
+	margin-left: 20px;
+	padding: 0 10px;
+	font-size: 20px;
+	font-weight: 300
+}
+
+
+.layout-form-item {
+	margin-bottom: 15px;
+	clear: both;
+	*zoom: 1
+}
+
+.layout-form-item:after {
+	content: '\20';
+	clear: both;
+	*zoom: 1;
+	display: block;
+	height: 0
+}
+.layout-form-item .layout-inline {
+	margin-bottom: 5px;
+	margin-right: 10px
+}
+

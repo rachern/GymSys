@@ -1,0 +1,215 @@
+/* 用户页面部分的公共样式 */
+
+
+
+/*css样式重置*/
+body{
+	margin: 0;
+}
+ol,ul{
+	list-style: none;
+}
+ul,h1{
+	margin: 0;
+	padding: 0;
+}
+/* 文字被选中时候的样式 */
+::selection{
+	color: #fff;
+	background:#3BDFC4;
+	text-shadow: none;
+};
+input{
+	outline: none;
+}
+/* 清浮动类 */
+.clearfix:before,.clearfix:after{     /* 这里before是为了防止顶部的空白崩溃 */
+	content: " ";
+	display: table;
+}
+.clearfix:after{
+	clear: both;
+}
+
+html{
+	font-size: 62.5%;  /* 这样设置的话1rem=10px */
+	color: #fafafa;  
+	/* 整个html的文档的背景色,防止用户设置了背景色而导致某些效果显示不正确 */
+}
+
+a{
+	color: #fff;
+	text-decoration: none;
+}
+a:hover{
+	color: #34C3B2;
+	text-decoration: none;
+}
+a:focus{
+	color:#fff;
+}
+/*不允许将文本输入框拉伸*/
+textarea {
+    resize: none;
+}
+
+
+/* 顶部显示用户登录栏 */
+
+.header-top{
+	width: 100%;
+	font-size: 1.2rem;
+	line-height: 4rem;
+	background-color: #FBFBFB;
+	border-bottom: 1px solid #EAEAEA;
+}
+
+.header-top a{
+	cursor: pointer;
+	color: #666;
+}
+.header-top .login-btn,.header-top .sign-btn{
+	border: none;
+	background-color: #3BDFC4;
+	color: #fff;
+}
+.logo-container{
+	color: #666;
+	margin-top: 1.5rem;
+}
+@media only screen and (max-width: 48em) {
+	.logo-container h1{
+		display: none;
+	}
+}
+
+.hello-user-box{
+	display: none;
+}
+.hello-user-box{
+	font-size: 1.6rem;
+}
+
+
+
+@media only screen and (max-width: 48em) {
+	.logo-container input{
+		width: 262px;
+	}	
+}
+
+.logo-container input:focus{
+	outline: none;
+	box-shadow: 0 0 10px #E62D28;
+}
+
+
+
+/*导航栏*/
+.header-nav{
+	margin-top: 12px;
+	background-color: #3BDFC4;
+}
+.header-nav a:hover{
+	color: #fff;
+}
+
+.header-nav li{
+	line-height:30px; 
+	padding: 5px 10px;
+	display: inline-block;
+	position: relative;
+}
+
+/* 下光标跟随效果 */
+.header-nav li:before{
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 100%;
+	width: 0;
+	/* border-bottom: 4px solid #E62D28; */
+	border-bottom: 4px solid #155146;
+	transition: .4s all linear;
+}
+.header-nav li:hover::before{
+	width: 100%;
+	left: 0;
+}
+.header-nav li:hover ~ .header-nav li::before{
+	left: 0;
+}
+/* hover样式 */
+.header-nav li:hover{
+	/* background-color: #FF6E97;	 */
+	background-color: #268c7b;
+}
+
+/* 中间内容样式占据最小高度一个页面 */
+.content{
+	min-height: 100vh;
+}
+
+/*底部样式*/
+footer{
+	margin-top: 24px;
+	color: #fff;
+	line-height: 40px;
+}
+.footer-about{
+	background-color: #3BDFC4;
+}
+.footer-about a:hover{
+	color: #fff;
+}
+.footer-copyright{
+	background-color: #33c0a8;
+}
+
+/* 更改模态框的样式 */
+
+.modal-header{
+	background-color: #33c0a8;
+}
+.modal-header .h4{
+	color: #fff;
+}
+.modal-header button{
+	color: #fff;
+}
+.modal-header button:hover{
+	color: #f00;
+}
+.modal-body{
+	background-color: #fff;
+}
+
+/* 填写表单时候的提示语样式 */
+
+.tips{
+	visibility: hidden;
+	color: #f00;
+}
+
+/*登录模态框*/
+.login-submit,.signin-submit{
+	color: #fff;
+	border: none;
+	background-color: #33c0a8;
+	width: 80%;
+}
+.login-submit:hover,.signin-submit:hover{
+	color: #fff;
+	background-color: #40DBBF;
+}
+.login-submit:focus,.signin-submit:focus,.login-submit:active,.signin-submit:active{
+	background-color: #36B7A0;
+}
+
+/* 模态框中的form-group */
+.form-group p{
+	margin: 0;
+}
+.form-group label{
+	line-height: 36px;
+}

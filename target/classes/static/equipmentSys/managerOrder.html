@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>managerOrder</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/userOrder.css">
+	</head>
+	<body>
+		<div id="nav">
+			<nav class="navbar navbar-default navbar-inverse">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="#" style="font-size: 20px;">广东海洋大学体育馆管理系统管理端</a>
+			    </div>
+			
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+			        <li><a href="#">用户管理</a></li>
+			        <li class="dropdown" class="active">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">器材管理 <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			          	<li><a href="/equipmentSys/managerBuy.html">购置器材</a></li>
+			            <li><a href="/equipmentSys/managerUpdate.html">更新器材信息</a></li>
+			            <li><a href="/equipmentSys/managerDamage.html">添加损坏器材</a></li>
+			            <li><a href="/equipmentSys/damageEquipmentList.html">查询损坏器材</a></li>
+			            <li><a href="/equipmentSys/managerOrder.html">查询订单</a></li>
+						  <li><a href="/equipmentSys/compensateStandardList.html">赔偿标准</a></li>
+						  <li><a href="/equipmentSys/eqStatement.html">收支报表</a></li>
+						  <li><a href="/equipmentSys/managerEquipmentList.html">器材列表</a></li>
+			          </ul>
+			        </li>
+			        <li><a href="#">场地管理</a></li>
+			        <li><a href="#">赛事管理</a></li>
+			      </ul>
+			      <ul class="nav navbar-nav navbar-right">
+			      	<li><a href="#">注册</a></li>
+			        <li><a href="#">登录</a></li>
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+		</div>
+		<div id="content" class="container">
+			<button type="button" class="btn btn-primary" @click="order(0)">全部</button>
+			<button type="button" class="btn btn-success" @click="order(1)">租借</button>
+			<button type="button" class="btn btn-info" @click="order(2)">购置</button>
+			<button type="button" class="btn btn-warning" @click="order(3)">维修</button>
+			<button type="button" class="btn btn-danger" @click="order(4)">报废</button>
+			用户名：<input type="text" class="username" placeholder="请输入用户名">
+			<button type="button" class="btn btn-info" @click="search">搜索</button>
+			<div id="result" class="container">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1 class="panel-title">查询结果</h1>
+					</div>
+					<div class="panel-body" style="text-align: center">
+						<table class="table table-hover table-striped table-bordered" style="display: none">
+						  	<tr>
+								<th>订单id</th>
+								<th>创建时间</th>
+								<th>订单类型</th>
+								<th>订单状态</th>
+								<th>查看详情</th>
+						  	</tr>
+						  	<tr v-for="(order,index) in orderList" :key="index">
+						  		<td>{{order.id}}</td>
+						  		<td>{{order.createTime}}</td>
+						  		<td>{{order.orderType}}</td>
+						  		<td>{{order.orderStatus}}</td>
+						  		<td><a href="#" @click="detail(index)">订单详情</a></td>
+						  	</tr>
+						</table>
+						<nav class="paging" aria-label="Page navigation" style="display: none">
+							<ul class="pagination">
+								<li @click="prev">
+									<a href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<li v-for="n in pages" @click="turn(n)"><a href="#">{{n}}</a></li>
+								<li @click="next">
+									<a href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/managerOrder.js"></script>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.rjgc.GymSys.mapper.auth.AuthUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="team.rjgc.GymSys.entity.auth.AuthUser">
+        <id column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+        <result column="user_password" property="userPassword" />
+        <result column="user_email" property="userEmail" />
+    </resultMap>
+
+    <!--
+      帐号
+  -->
+    <resultMap id="userDTO" type="team.rjgc.GymSys.dto.auth.UserDTO" >
+        <id column="user_id" property="id" jdbcType="BIGINT" />
+        <result column="user_name" property="name" jdbcType="VARCHAR" />
+        <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+        <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+        <collection property="children" resultMap="roleDTO"/>
+    </resultMap>
+
+    <!--
+        角色
+    -->
+    <resultMap id="roleDTO" type="team.rjgc.GymSys.dto.auth.RoleDTO" >
+        <id column="role_id" property="id" jdbcType="BIGINT" />
+        <result column="role_name" property="name" jdbcType="VARCHAR" />
+        <collection property="children" resultMap="powerDTO"/>
+    </resultMap>
+
+    <!--
+        权限
+    -->
+    <resultMap id="powerDTO" type="team.rjgc.GymSys.dto.auth.PowerDTO" >
+        <id column="power_id" property="id" jdbcType="BIGINT" />
+        <result column="power_name" property="name" jdbcType="VARCHAR" />
+        <result column="url" property="url" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="userParam">
+        u.user_id, u.user_name, u.user_password, u.user_email,
+    </sql>
+
+    <sql id="roleParam">
+        r.role_id, r.role_name,
+    </sql>
+
+    <sql id="powerParam">
+        p.power_id, p.power_name, p.url, p.create_time, p.update_time
+    </sql>
+
+    <!--
+            用户权限等级查询
+    -->
+    <select id="findAuthority" parameterType="java.lang.String" resultType="java.lang.String">
+        select url
+        from auth_user u, auth_user_role_table urt, auth_role r, auth_role_power_table rpt, auth_power p
+        <where>
+            u.user_name = #{name}
+            and u.user_id = urt.user_id
+            and urt.role_id = r.role_id
+            and r.role_id = rpt.role_id
+            and rpt.power_id = p.power_id
+        </where>
+    </select>
+
+    <!--
+            用户权限等级查询
+    -->
+    <select id="findAuthorityInfo" parameterType="java.lang.String" resultMap="userDTO">
+        select
+        <include refid="userParam"/>
+        <include refid="roleParam"/>
+        <include refid="powerParam"/>
+        from auth_user u, auth_user_role_table urt, auth_role r, auth_role_power_table rpt, auth_power p
+        <where>
+            u.user_name = #{name}
+            and u.user_id = urt.user_id
+            and urt.role_id = r.role_id
+            and r.role_id = rpt.role_id
+            and rpt.power_id = p.power_id
+        </where>
+    </select>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id, user_name, user_password, user_email
+    </sql>
+
+</mapper>

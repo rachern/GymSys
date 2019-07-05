@@ -1,0 +1,53 @@
+body{
+	padding: 0;
+	margin: 0;
+}
+form{
+  margin-top: 2rem ! important;
+}
+.divinput{
+	width: 790px ! important;
+	float: left;
+}
+.tip{
+  padding-top: 0.5rem;
+  color:	#104E8B;
+  font-weight: bold;
+  	float: left;
+
+
+}
+.iconfont{
+	display: block;
+	position: absolute;
+	right: 0;
+	width: 1.5rem;
+	top:9px;	
+}
+.content{
+	width: 45rem;
+}
+@font-face {
+  font-family: 'iconfont';
+  src: url('../font/font2-person/iconfont.eot');
+  src: url('../font/font2-person/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../font/font2-person/iconfont.woff') format('woff'),
+  url('../font/font2-person/iconfont.ttf') format('truetype'),
+  url('../font/font2-person/iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:20px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.4px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.status{
+	color: #FF5722;
+}
+textarea{
+  resize:none;
+  width: 680px !important;
+  height: 380px !important;
+}

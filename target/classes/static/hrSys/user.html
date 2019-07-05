@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>体育馆管理系统</title>
+    <link rel="stylesheet" href="frame/layui/css/layui.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="frame/jquery-3.2.1.js"></script>
+    <script src="frame/layui/layui.js"></script>
+    <script src="js/demo.js"></script>
+    <script src="js/util.js"></script>
+</head>
+
+<body>
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header" id="header">
+            <a href="#">
+                <div class="layui-logo"><i class="layui-icon">&#xe603;</i></div>
+            </a>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <div class="layui-layout-left">
+                <span>欢迎进入用户端页面 <i class="layui-icon">&#xe68e;</i></span>
+            </div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+					<a href="javascript:;">
+						<i class="layui-icon">&#xe612;</i>
+						<span id="Administrator-name">用户</span>
+					</a>
+				</li>
+                <li class="layui-nav-item"><a id="exit">退出</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black" id="sider">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;"><i class="layui-icon iconsize">&#xe63c;</i> 用户管理</a>
+                        <dl class="layui-nav-child">
+                            <dd class="layui-this"><a href="javascript:;">个人信息</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+						<a href="javascript:;"><i class="layui-icon">&#xe60a;</i> 器材管理</a>
+						<dl class="layui-nav-child">
+							<dd><a href="javascript:;">申请器材</a></dd>
+                        </dl>
+                        <dl class="layui-nav-child">
+							<dd><a href="javascript:;">归还器材</a></dd>
+						</dl>
+					</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body" id="content">
+            <!-- 内容主体区域 -->
+            <span class="layui-breadcrumb layui-bg-gray">
+                <a>用户管理</a>
+                <a><cite>个人信息</cite></a>
+            </span>
+            <div id="iframe_wrap" style="height:90%;padding: 35px 15px 15px 15px;">
+                <iframe src="user-Info.html" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

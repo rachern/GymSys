@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
+		<meta name="viewport" content="initial-scale=1,width=device-width"/> 
+		<link rel="stylesheet" href="css/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/layui.css" />
+		
+		<link rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css"/>
+		 
+		<title>海大体育馆管理系统</title>
+	</head>
+	<body>
+		<div class="div-style">
+			<fieldset class="layui-elem-field">
+				<legend>场地列表</legend>
+				<div class="layui-field-box">
+					<table class="layui-table" id="FieldListTable" lay-filter="tablefilter">
+					
+					<tr>
+						<td>ID</td>
+						<td>场地编名</td>
+						<td>类型</td>
+						<td>上课场地</td>
+						<td>训练场地</td>
+						<td>租金(元/h)</td>
+						<td>操作</td>
+					</tr>
+					<!-- <tr>
+						<td>1</td>
+						<td>篮球场1-4</td>
+						<td>篮球场地</td>
+						<td>A</td>
+						<td>AAA</td>
+						<td>10</td>
+						<td><a class="a-book" href="index.html">预约</a></td>
+					</tr> -->
+					</table>
+				</div>
+			</fieldset>
+		</div>
+		
+		<div class="div-style">
+			<fieldset class="layui-elem-field">
+				<legend>预约场地</legend>
+				<form id="reserveForm" action="" role="form" >
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							<label class="layui-form-label" >场地ID：</label>
+							<div class="layui-input-inline">
+								<input type="text" name="idfield" class="layui-input"></input>
+							</div>
+						</div>
+						<div class="layui-inline">
+							<label class="layui-form-label" >用户ID：</label>
+							<div class="layui-input-inline">
+								<input type="text" name="user_id" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<label class="layui-form-label" >金额：</label>
+							<div class="layui-input-inline">
+								<input id="cost" type="text" name="order_cost"
+									class="layui-input">
+							</div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-inline">
+							<label class="layui-form-label" >订单日期：</label>
+							<div class="layui-input-inline">
+								<input id="order_date" type="datetime" name="order_date" class="layui-input">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<label class="layui-form-label" >预约起始日期：</label>
+							<div class="layui-input-inline">
+								<input id="d_begin" type="datetime" name="order_begin" class="layui-input Wdate">
+							</div>
+						</div>
+						<div class="layui-inline">
+							<label class="layui-form-label" >预约结束日期：</label>
+							<div class="layui-input-inline">
+								<input id="d_end" type="datetime" name="order_end" class="layui-input Wdate">
+							</div>
+						</div>
+					</div>
+					
+				</form>
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<button id="btn_book"  class="layui-btn" >提交预约</button>
+						<button id="btn_reset"  class="layui-btn layui-btn-primary">重置</button>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		
+		<script src="js/jquery-3.3.1.js"></script>
+		<!-- 引入jQuery -->
+		<script src="css/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		<!-- 引入bootstrap -->
+		<script src="js/jquery.cookie.js"></script>
+		<!-- 引入cookie插件 -->
+		<script src="js/areaInfo.js"></script>
+		 <!--添加jQuery UI-->
+		<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  
+		
+	</body>
+	
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>userEquipmentList</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/userEquipmentList.css">
+	</head>
+	<body>
+	<div id="nav">
+		<nav class="navbar navbar-default navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#" style="font-size: 20px;">广东海洋大学体育馆管理系统用户端</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+						<li class="dropdown" class="active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">器材租借 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="/equipmentSys/userEquipmentList.html">器材租借</a></li>
+								<li><a href="/equipmentSys/userCompensate.html">赔偿标准</a></li>
+							</ul>
+						</li>
+						<li class="dropdown" class="active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">场地租借 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="/areaSys/index.html">场地租借</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle head" data-toggle="dropdown"></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">修改密码</a></li>
+								<li><a href="/equipmentSys/userOrder.html">我的订单</a></li>
+								<li><a href="#">退出</a></li>
+							</ul>
+						</li>
+						<li><a href="#">注册</a></li>
+						<li><a href="#">登录</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+		<div id="content">
+			<div id="result" class="container">
+				<h1>器材查询结果</h1>
+				<div class="row">
+				  <div class="col-sm-6 col-md-4 col-lg-3" v-for="(equipment,index) in equipmentList" :key="index">
+				    <div class="thumbnail">
+				      <div class="caption">
+				        <h3>{{equipment.name}}</h3>
+				        <p>器材总数：<span>{{equipment.totalNumber}}</span></p>
+				        <p>可借数量：<span>{{equipment.usedNumber}}</span></p>
+				        <p class="price">价格：<span>{{equipment.price}}</span>元/小时</p>
+				        <p class="nums">数量：
+				        	<span class="glyphicon glyphicon-minus-sign" @click="minusNum(index)"></span>
+				        	<span class="num">{{equipment.rentNumber}}</span>
+				        	<span class="glyphicon glyphicon-plus-sign" @click="addNum(index)"></span></p>
+				        <p class="rent"  @click="rent(index)"><a href="#" class="btn btn-primary" role="button">租借</a></p>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+			
+			<div id="cart" class="container">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1 class="panel-title">购物车</h1>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover table-striped table-bordered">
+						  	<tr>
+							  	<th>器材名称</th>
+							  	<th>器材单价</th>
+							  	<th>租借数量</th>
+								<th>操作</th>
+							</tr>
+							<tr v-for="(rentEquipment,index) in rentEquipments" :key="index" >
+							  	<td>{{rentEquipment.name}}</td>
+							  	<td>{{rentEquipment.price}}</td>
+							  	<td>{{rentEquipment.rentNumber}}</td>
+								<td><button type="button" class="btn btn-danger" @click="cancelThis(index)">取消</button></td>
+							</tr>
+							<tr>
+							  	<td></td><td></td>
+							  	<td>时长：<input type="text" v-model="time" style="width: 50px;">小时&nbsp;&nbsp;总价：￥{{totalPrice}}</td>
+							  	<td>
+							  		<button type="button" class="btn btn-success" @click="confirm">确认订单</button>
+							  		<button type="button" class="btn btn-danger" @click="cancel">取消订单</button>
+							  	</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script type="text/javascript" src="js/userEquipmentList.js"></script>
+	</body>
+</html>

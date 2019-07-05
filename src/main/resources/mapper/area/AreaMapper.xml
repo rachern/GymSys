@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team.rjgc.GymSys.mapper.area.AreaMapper">
+
+    <resultMap id="AreaBook" type="team.rjgc.GymSys.entity.area.AreaBook"/>
+    <resultMap id="AreaUse" type="team.rjgc.GymSys.entity.area.AreaUse"/>
+    <!--
+            有效的场地预定
+    -->
+    <select id="effectiveBook" resultMap="AreaBook">
+        SELECT
+        *
+        FROM
+        `area_book`
+        <where>
+            <if test="area_id!=null and area_id!=''">
+                area_id = #{area_id} AND
+            </if>
+            <if test="book_start_time!=null">
+                book_start_time &lt; #{book_start_time}AND
+                book_end_time &gt; #{book_start_time} AND
+            </if>
+            <if test="book_end_time!=null">
+                book_start_time &lt; #{book_end_time}AND
+                book_end_time &gt; #{book_end_time} AND
+            </if>
+            book_start_time > LOCALTIME
+        </where>
+    </select>
+
+    <!--
+        失约的场地预约
+    -->
+    <select id="breakBook" resultMap="AreaBook">
+        SELECT
+        *
+        FROM
+        area_book
+        WHERE
+        NOT EXISTS ( SELECT area_book_id FROM area_use )
+        AND book_end_time &lt;; LOCALTIME
+    </select>
+
+    <select id="history" resultMap="AreaUse">
+        SELECT
+	    *
+        FROM
+        `area_use`
+        LEFT JOIN area_book ON area_use.area_book_id = area_use.area_book_id
+        LEFT JOIN auth_user ON area_book.user_id = auth_user.user_id
+        where auth_user.user_id = #{user_id}
+    </select>
+
+</mapper>

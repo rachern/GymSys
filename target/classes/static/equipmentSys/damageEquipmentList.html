@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>damageEquipmentList</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div id="nav">
+			<nav class="navbar navbar-default navbar-inverse">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="#" style="font-size: 20px;">广东海洋大学体育馆管理系统管理端</a>
+			    </div>
+			
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav">
+			        <li><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+			        <li><a href="#">用户管理</a></li>
+			        <li class="dropdown" class="active">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">器材管理 <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			          	<li><a href="/equipmentSys/managerBuy.html">购置器材</a></li>
+			            <li><a href="/equipmentSys/managerUpdate.html">更新器材信息</a></li>
+			            <li><a href="/equipmentSys/managerDamage.html">添加损坏器材</a></li>
+			            <li><a href="/equipmentSys/damageEquipmentList.html">查询损坏器材</a></li>
+			            <li><a href="/equipmentSys/managerOrder.html">查询订单</a></li>
+						<li><a href="/equipmentSys/compensateStandardList.html">赔偿标准</a></li>
+						<li><a href="/equipmentSys/eqStatement.html">收支报表</a></li>
+						 <li><a href="/equipmentSys/managerEquipmentList.html">器材列表</a></li>
+			          </ul>
+			        </li>
+			        <li><a href="#">场地管理</a></li>
+			        <li><a href="#">赛事管理</a></li>
+			      </ul>
+			      <ul class="nav navbar-nav navbar-right">
+			      	<li><a href="#">注册</a></li>
+			        <li><a href="#">登录</a></li>
+			      </ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+		</div>
+		<div id="content" class="container">
+			<div id="result" class="container">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+					    <h1 class="panel-title">损坏器材查询结果</h1>
+					</div>
+					<div class="panel-body">
+					    <table class="table table-hover table-striped table-bordered">
+						  	<tr>
+								<th>器材名称</th>
+								<th>器材数量</th>
+								<th>操作</th>
+						  	</tr>
+						  	<tr v-for="(equipment,index) in equipmentList" :key="index">
+						  		<td>{{equipment.name}}</td>
+						  		<td>{{equipment.number}}</td>
+						  		<td>
+						  			<button type="button" class="btn btn-danger scrap" @click="scrap(index)">报废</button>
+						  			<button type="button" class="btn btn-success repairs" @click="repairs(index)">维修</button>
+						  		</td>
+						  	</tr>
+						</table>
+					</div>
+				</div>	
+			</div>
+			
+			<div id="scrap" class="container">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+					    <h1 class="panel-title">报废器材</h1>
+					</div>
+					<div class="panel-body">
+					    <table class="table table-hover table-striped table-bordered scrap" style="display: none">
+						  	<tr>
+								<th>器材名称</th>
+								<th>器材数量</th>
+						  	</tr>
+						  	<tr v-for="(equipment,index) in scrapEquipmentList" :key="index">
+						  		<td>{{equipment.name}}</td>
+						  		<td><input type="text" :value="equipment.number" @change="changeScrapNum($event,index)"></td>
+						  	</tr>
+						  	<tr>
+						  		<td></td>
+						  		<td><button type="button" class="btn btn-danger" @click="confirmScrap">确认</button></td>
+						  	</tr>
+						</table>
+					</div>
+				</div>	
+			</div>
+			
+			<div id="repairs" class="container">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+					    <h1 class="panel-title">维修器材</h1>
+					</div>
+					<div class="panel-body">
+					    <table class="table table-hover table-striped table-bordered repairs" style="display: none">
+						  	<tr>
+								<th>器材名称</th>
+								<th>器材数量</th>
+						  	</tr>
+						  	<tr v-for="(equipment,index) in repairsEquipmentList" :key="index">
+						  		<td>{{equipment.name}}</td>
+						  		<td><input type="text" :value="equipment.number" @change="changeRepairsNum($event,index)"></td>
+						  	</tr>
+						  	<tr>
+						  		<td>维修价格：￥<input type="text" v-model="price"></td>
+						  		<td><button type="button" class="btn btn-danger" @click="confirmRepairs">确认</button></td>
+						  	</tr>
+						</table>
+					</div>
+				</div>	
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript" src="js/jquery-1.10.1.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/damageEquipmentList.js"></script>
+	</body>
+</html>
